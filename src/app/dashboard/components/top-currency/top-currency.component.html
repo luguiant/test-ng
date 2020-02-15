@@ -1,0 +1,44 @@
+<div class="container pt-4">
+    <div class="row">
+      <div class="col-12">
+          <div class="example-container mat-elevation-z8">
+              <table
+              mat-table
+              [dataSource]="top"
+              [class.isMobile]="isMobile"
+            >
+              <!-- Name Column -->
+              <ng-container matColumnDef="nombre">
+                <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <span class="mobile-label">Nombre:</span>
+                  {{ element.name_coin }}
+                </mat-cell>
+              </ng-container>
+      
+              <!-- price Column -->
+              <ng-container matColumnDef="valor">
+                <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <span class="mobile-label">Precio:</span>
+                  {{ element.price_coin }}
+                </mat-cell>
+              </ng-container>
+      
+              <!-- Source Column -->
+              <ng-container matColumnDef="fuente">
+                <mat-header-cell *matHeaderCellDef> Fuente </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <span class="mobile-label">Fuente:</span>
+                  {{ element.source }}
+                </mat-cell>
+              </ng-container>
+      
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </table>
+          </div>
+        
+      </div>
+    </div>
+  </div>

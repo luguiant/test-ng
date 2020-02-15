@@ -1,1 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/utilities";
+
+html,
+body {
+  line-height: 1.5;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.87);
+  height: 100%;
+}
+p{
+  margin-bottom: 0px;
+}
+body {
+  margin: 0;
+  height: 100%;
+  background: #f2f2f2;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.container,
+.container-fluid {
+  height: 100%;
+}
+
+.boton-login{
+    background: -webkit-linear-gradient(right,#21d4fd,#b721ff,#21d4fd,#b721ff);
+}
+
+#container {
+  top: 64px !important;
+ }
+ 
+ @media(max-width: 599px) {
+   #container {
+     top: 56px !important;
+   }
+ }
+
+ .mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mobile-label {
+  display: none;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+@media (max-width: 600px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
+}

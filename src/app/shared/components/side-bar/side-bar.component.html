@@ -1,0 +1,21 @@
+<mat-toolbar color="warn">
+    <mat-toolbar-row>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Digital Currency</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container id="container" fullscreen class="example-container">
+    <mat-sidenav #drawer mode="over" opened role="navigation">
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/inicio']">Inicio</a>
+        <a mat-list-item [routerLink]="['/inicio/add-currency']">Agregar moneda</a>
+        <a mat-list-item [routerLink]="['/inicio/conver']">Convertir</a>
+        <a mat-list-item [routerLink]="['/inicio/top-currency']">Top</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

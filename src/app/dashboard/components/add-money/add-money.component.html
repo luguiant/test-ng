@@ -1,0 +1,31 @@
+<div class="container pt-4">
+  <div class="row align-items-center">
+    <div class="col-12 col-sm-4 mx-auto">
+      <mat-card class="text-center">
+        <mat-card-content>
+          <form class="example-form">
+            <mat-form-field class="w-100">
+              <input
+                type="text"
+                placeholder="Buscar moneda"
+                aria-label="Number"
+                matInput
+                [formControl]="myControl"
+                [matAutocomplete]="auto"
+              />
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredOptions | async"
+                  [value]="option.name"
+                >
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+          <button (click)="submit()" mat-raised-button [disabled]="!form.valid" color="primary">Guardar</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

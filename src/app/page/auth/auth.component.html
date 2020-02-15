@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row align-items-center h-100">
+    <div class="col-12 col-sm-4 col-lg-3 mx-auto">
+      <mat-card id="card-login" [formGroup]="form">
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <mat-label>Username</mat-label>
+            <input type="text"  matInput placeholder="Ingrese el username" formControlName="username" />
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input type="password" id="password" name="password" appValidation [group]="form" [length]="8" matInput placeholder="Ingrese el password" formControlName="password" />
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions> 
+          <button (click)="submit()" mat-raised-button [disabled]="!form.valid" color="primary">Primary</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+ 
+</div>
