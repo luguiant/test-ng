@@ -14,7 +14,8 @@ import {
   MatAutocompleteModule,
   MatButtonModule,
   MatSnackBarModule,
-  MatSelectModule
+  MatSelectModule,
+  MatTabsModule
 } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CoreModule } from '../core/core.module';
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatTabsModule,
     MatSnackBarModule,
     MatCardModule,
     MatAutocompleteModule,

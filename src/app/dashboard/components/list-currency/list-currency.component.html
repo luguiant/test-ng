@@ -1,44 +1,134 @@
 <div class="container pt-4">
   <div class="row">
     <div class="col-12">
-        <div class="example-container mat-elevation-z8">
-            <table
-            mat-table
-            [dataSource]="listCurrency"
-            [class.isMobile]="isMobile"
-          >
-            <!-- Name Column -->
-            <ng-container matColumnDef="nombre">
-              <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <span class="mobile-label">Nombre:</span>
-                {{ element.name_coin }}
-              </mat-cell>
-            </ng-container>
-    
-            <!-- price Column -->
-            <ng-container matColumnDef="valor">
-              <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <span class="mobile-label">Precio:</span>
-                {{ element.price_coin }}
-              </mat-cell>
-            </ng-container>
-    
-            <!-- Source Column -->
-            <ng-container matColumnDef="fuente">
-              <mat-header-cell *matHeaderCellDef> Fuente </mat-header-cell>
-              <mat-cell *matCellDef="let element">
-                <span class="mobile-label">Fuente:</span>
-                {{ element.source }}
-              </mat-cell>
-            </ng-container>
-    
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </table>
-        </div>
-      
+      <mat-tab-group
+        [selectedIndex]="selected.value"
+        (selectedIndexChange)="selected.setValue($event)"
+        dynamicHeight
+      >
+        <mat-tab label="REALIZAR CAMBIO">
+          <div class="row container-form">
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-12 center-div">
+                  <p class="title">Realizar cambio</p>
+                </div>
+                <div class="col-12 col-lg-12 center-div">
+                  <div class="row">
+                    <div class="col-12 col-lg-5 center-div">
+                      <div class="row">
+                        <div class="col-12 col-lg-8 offset-lg-2">
+                          <form [formGroup]="form">
+                            <input
+                              formControlName="qty"
+                              id="qty"
+                              name="qty"
+                              appValidation
+                              [group]="form"
+                              [length]="8"
+                              class="px-2 input-convert"
+                            />
+                            <input
+                              formControlName="from"
+                              readonly
+                              class="px-2 input-convert"
+                            />
+                            <input
+                              formControlName="to"
+                              readonly
+                              class="px-2 input-convert"
+                            />
+                            <input
+                              formControlName="convert"
+                              readonly
+                              class="px-2 input-convert"
+                            />
+                          </form>
+                        </div>
+                        <div class="col-12 col-lg-2 center-vertical">
+                          <button (click)="invert()" class="convert_btn"> 
+                            <i class="fas fa-sync-alt"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="LISTADO DE MONEDAS">
+          <div class="row">
+            <div class="col-12">
+              <table
+                mat-table
+                [dataSource]="listCurrency"
+                [class.isMobile]="isMobile"
+              >
+                <!-- Name Column -->
+                <ng-container matColumnDef="nombre">
+                  <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+                    <span class="mobile-label">Nombre:</span>
+                    {{ element.name_coin }}
+                  </mat-cell>
+                </ng-container>
+
+                <!-- price Column -->
+                <ng-container matColumnDef="valor">
+                  <mat-header-cell *matHeaderCellDef class="center-cell"
+                    >Precio</mat-header-cell
+                  >
+                  <mat-cell class="center-cell" *matCellDef="let element">
+                    <span class="mobile-label">Precio:</span>
+                    <span class="currency">{{
+                      element.price_coin | currency
+                    }}</span>
+                  </mat-cell>
+                </ng-container>
+
+                <!-- Source Column -->
+                <ng-container matColumnDef="fuente">
+                  <mat-header-cell *matHeaderCellDef class="center-cell">
+                    Fuente
+                  </mat-header-cell>
+                  <mat-cell class="center-cell" *matCellDef="let element">
+                    <span class="mobile-label">Fuente:</span>
+                    <span>{{ element.source }}</span>
+                  </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="convertir">
+                  <mat-header-cell class="end-cell" *matHeaderCellDef>
+                    Convertir
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let element" class="end-cell">
+                    <button
+                      class="convert_btn"
+                      (click)="clickCode(element.code_coin)"
+                    >
+                      <i class="fa fa-random fa-lg"></i>
+                    </button>
+                  </mat-cell>
+                </ng-container>
+
+                <mat-header-row
+                  *matHeaderRowDef="displayedColumns"
+                ></mat-header-row>
+                <mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></mat-row>
+              </table>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="example-container mat-elevation-z8"></div>
     </div>
   </div>
 </div>

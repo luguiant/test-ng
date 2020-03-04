@@ -27,4 +27,8 @@ export class CoinService {
   public converService(from: string, qty: number): Observable<any>{
     return this.http.post<any>(`${environment.url_base_service}/coin/convert`,{from, qty});
   }
+
+  public converList(body): Observable<any>{
+    return this.http.post<any>(`${environment.url_base_service}/coin/convert_list`, body);
+  }
 }
